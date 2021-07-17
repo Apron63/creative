@@ -5,3 +5,5 @@ config/app.*.yaml
 .php_cs.cache
 .env.local
 .env.*.local
+
+/.idea/
