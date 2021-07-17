@@ -8,7 +8,14 @@
         <table class="table table-bordered">
             {% for trailer in trailers %}
                 <tr>
-                    <td>{{ trailer.title }}</td>
+                    <td>
+                        <a href="/detail/{{ trailer.id }}/">{{ trailer.title }}</a>
+                    </td>
+                    <td>
+                        {% if trailer.image is not null %}
+                            <img src="{{ trailer.image }}" alt="{{ trailer.image }}">
+                        {% endif %}
+                    </td>
                 </tr>
             {% endfor %}
         </table>

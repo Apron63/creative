@@ -2,7 +2,7 @@
 
 namespace App\Provider;
 
-use App\Command\{FetchDataCommand, RouteListCommand};
+use App\Command\{FetchDataCommand, ImportRssCommand, RouteListCommand};
 use App\Container\Container;
 use App\Support\{CommandMap, ServiceProviderInterface};
 use Doctrine\ORM\EntityManagerInterface;
@@ -23,7 +23,12 @@ class ConsoleCommandProvider implements ServiceProviderInterface
             return new FetchDataCommand($container->get(ClientInterface::class), $container->get(LoggerInterface::class), $container->get(EntityManagerInterface::class));
         });
 
+        $container->set(ImportRssCommand::class, static function (ContainerInterface $container) {
+            return new ImportRssCommand($container->get(EntityManagerInterface::class));
+        });
+
         $container->get(CommandMap::class)->set(RouteListCommand::getDefaultName(), RouteListCommand::class);
         $container->get(CommandMap::class)->set(FetchDataCommand::getDefaultName(), FetchDataCommand::class);
+        $container->get(CommandMap::class)->set(ImportRssCommand::getDefaultName(), ImportRssCommand::class);
     }
 }
