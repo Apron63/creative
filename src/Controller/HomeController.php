@@ -11,6 +11,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Interfaces\RouteCollectorInterface;
 use Twig\Environment;
+use function App\Support\__invoke;
 
 class HomeController
 {
@@ -25,6 +26,8 @@ class HomeController
         try {
             $data = $this->twig->render('home/index.html.twig', [
                 'trailers' => $this->fetchData(),
+                'class' => __CLASS__,
+                'method' => __FUNCTION__,
             ]);
         } catch (\Exception $e) {
             throw new HttpBadRequestException($request, $e->getMessage(), $e);

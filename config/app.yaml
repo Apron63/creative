@@ -1,5 +1,5 @@
 slim:
-  debug: false
+  debug: true
 
 templates:
   dir: template

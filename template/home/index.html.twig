@@ -12,5 +12,17 @@
                 </tr>
             {% endfor %}
         </table>
+
+        <div class="row">
+            Current datetime is: {{ 'now' | date('d.m.Y H:i:s') }}
+        </div>
+
+        <div class="row">
+            Class is: {{ class }}
+        </div>
+
+        <div class="row">
+            Method is: {{ method }}
+        </div>
     </div>
 {% endblock %}
